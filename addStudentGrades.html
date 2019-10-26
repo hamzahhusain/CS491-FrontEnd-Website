@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+   <style>
+      .bg-img {
+      background-image: radial-gradient(grey,lightgrey,darkgrey,orange);
+      min-height: 100vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      }
+   </style>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <title>Assign Grades</title>
+   </head>
+   <div class="w3-bar w3-light-grey">
+      <a href="#" class="w3-bar-item w3-button">Home</a>
+      <a href="#" class="w3-bar-item w3-button">My profile</a>
+      <a href="#" class="w3-bar-item w3-button w3-right">Logout</a>
+   </div>
+   <img  class="w3-image w3-left" style="width:25%; max-height:100px; max-width:100px" src="logo.webp">
+   <body class="bg-img">
+      <div class="w3-row w3-center">
+         <h1 class="w3-text-white" style="text-shadow:4px 4px 0 #444"><b>Assign Grades to students</b></h1>
+      </div>
+      <div class="w3-container w3-orange w3-col w3-display-middle w3-round-large">
+         <form class="w3-container ">
+            <div class="w3-padding">
+               <div class="w3-dropdown-click ">
+                  <button class="w3-button" onclick="myFunction()">Select a Student</button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-show">
+                     <a href="#" class="w3-bar-item w3-button">John Smith</a>
+                     <a href="#" class="w3-bar-item w3-button">Rachel Conner</a>
+                     <a href="#" class="w3-bar-item w3-button">Rick Blair</a>
+                  </div>
+               </div>
+               <div class="w3-dropdown-hover ">
+                  <button class="w3-button">Select an Assignment</button>
+                  <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                     <a href="#" class="w3-bar-item w3-button">John Smith</a>
+                     <a href="#" class="w3-bar-item w3-button">Rachel Conner</a>
+                     <a href="#" class="w3-bar-item w3-button">Rick Blair</a>
+                  </div>
+               </div>
+			   <label class="w3-right">Grade</label>
+			<input class="w3-input w3-round-large w3-right w3-col s1" type="text"><br>
+               <div class="w3-padding w3-center">
+                  <button class="w3-button w3-hover-green w3-black w3-round-large">Submit</button><br>
+               </div>
+            </div>
+			
+         </form>
+      </div>
+   </body>
+</html>
