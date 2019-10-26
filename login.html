@@ -1,0 +1,63 @@
+<!DOCUMENT html>
+  <html>
+
+  <head>
+    <title>Capstone Heros</title>
+    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+
+
+  </head>
+
+  <body>
+    <script>
+      $(document).ready(function(){
+
+        $("form").submit(function(event){
+          event.preventDefault();
+          alert('success1');
+
+          $.ajax({
+            url: "https://web.njit.edu/~gm247/CS491/login.php",//url: $("form").attr('action'),
+            type: 'POST',
+            data : $("#form1").serialize(),
+            crossDomain:true,
+            success: function(){
+              alert('success3');
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr);
+            }
+          });
+
+          alert('success2');
+          return false;
+        });
+
+      });
+    </script>
+
+    <div class="header">
+      <h1>Capstone Heros</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="#">Home</a>
+      <a href="#">Link</a>
+      <a href="#">Scoreboard</a>
+    </div>
+
+    <div>
+      <form id="form1" action="https://web.njit.edu/~gm247/CS491/login.php" method="post">
+        <br>
+        <input type="text" placeholder="USERNAME" name="username" required><hr><br><br>
+        <input type="password" placeholder="PASSWORD" name="password" required><hr><br><br>
+        <input type="submit" value="Login" name="login">  </input><br><br>
+        <a href="index.php"> Register Here </a>
+      </form>
+    </div>
+  </body>
+
+  </html>
