@@ -1,0 +1,79 @@
+<!DOCUMENT html>
+
+  <html>
+
+  <?php
+  session_start();
+  ?>
+
+  <head>
+    <title>Capstone Heros</title>
+    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+
+      function myFunction() {
+        var totalSpendPoints = document.getElementById("upgradePoints").innerText;
+        if (totalSpendPoints > 0){
+          document.getElementById("upgradePoints").innerHTML = totalSpendPoints - 1;
+        }
+      }
+
+    </script>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>Capstone Heros</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="#">Home</a>
+      <a href="#">Link</a>
+      <a href="#">Scoreboard</a>
+      <a href="logout.php">Log Out</a>
+    </div>
+
+    <div class="stats">
+      <h1>My Stats</h1>
+      <div>
+        <table>
+          <tr>
+            <td>Upgrade Points: </td>
+            <td id="upgradePoints">10<td>
+          </tr>
+        </table>
+      </div>
+
+      <hr>
+        <p>Health</p>
+        <div class="container">
+          <button style="display: inline;">-</button>
+          <div id="healthBar" class="myStats" style="background-color:red; width:100%;">90</div>
+          <button onclick="myFunction()">+</button>
+        </div>
+
+        <p>Power</p>
+        <div class="container">
+          <div id="powerBar" class="myStats" style="background-color:green; width:80%;">80%</div>
+        </div>
+
+        <p>Defense</p>
+        <div class="container">
+          <div id="defenseBar" class="myStats"  style="background-color:purple; width:65%;">65%</div>
+        </div>
+
+        <p>Special</p>
+        <div class="container">
+          <div id="specialBar" class="myStats" style="background-color:gold; width:60%;">60%</div>
+        </div>
+
+        <button id="submit" style="margin:15 0 0 0">Submit</button>
+    </div>
+  </body>
+
+  </html>
