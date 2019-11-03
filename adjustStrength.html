@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+   <style>
+      .bg-img {
+      background-image: radial-gradient(grey,lightgrey,darkgrey,orange);
+      min-height: 100vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      }
+   </style>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <title>Login Page</title>
+   </head>
+   <body class="bg-img">
+   <div class="w3-bar w3-light-grey">
+      <a href="#" class="w3-bar-item w3-button">Home</a>
+      <a href="#" class="w3-bar-item w3-button">My profile</a>
+      <a href="#" class="w3-bar-item w3-button w3-right">Logout</a>
+   </div>
+      <img  class="w3-image w3-left" style="width:25%; max-height:100px; max-width:100px" src="logo.webp">
+      <div class="w3-container w3-orange w3-col s8 l4 m8 w3-display-middle w3-round-large">
+         <div class="w3-container 23-padding-24">
+            <h2>Character skill points</h2>
+			Strength<br>
+            <div class="w3-light-grey">
+               <div id="strength" class="w3-green" style="height:24px;width:0"></div>
+			   
+            </div>
+			<div id=strengthVal>0</div>
+			<br>
+			<button class="w3-button w3-green" onclick="addAttack()">Add</button>
+			<button class="w3-button w3-green" onclick="subAttack()">Subtract</button>
+            <br>
+			
+			Defense<br>
+            <div class="w3-light-grey">
+               <div id="defense" class="w3-green" style="height:24px;width:0"></div>
+			   
+            </div>
+			<div id=defenseVal>0</div>
+			<br>
+			<button class="w3-button w3-green" onclick="addDefense()">Add</button>
+			<button class="w3-button w3-green" onclick="subDefense()">Subtract</button>
+            <br>
+			
+			Speed<br>
+            <div class="w3-light-grey">
+               <div id="speed" class="w3-green" style="height:24px;width:0"></div>
+			   
+            </div>
+			<div id=speedVal>0</div>
+			<br>
+			<button class="w3-button w3-green" onclick="addSpeed()">Add</button>
+			<button class="w3-button w3-green" onclick="subSpeed()">Subtract</button>
+            <br>
+            
+         </div>
+         <script>
+            function addAttack() {
+              var elem = document.getElementById("strength");   
+              var width = parseInt(elem.style.width);
+              if(width+10<=100)
+              	width+=10; 
+              elem.style.width = width + '%'; 
+              var val = document.getElementById("strengthVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+              
+            }
+            function subAttack(){
+            var elem = document.getElementById("strength");   
+              var width = parseInt(elem.style.width);
+              if(width-10>=0)
+              	width-=10; 
+              elem.style.width = width + '%'; 
+			  var val = document.getElementById("strengthVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+            }
+			
+			function addDefense() {
+              var elem = document.getElementById("defense");   
+              var width = parseInt(elem.style.width);
+              if(width+10<=100)
+              	width+=10; 
+              elem.style.width = width + '%'; 
+              var val = document.getElementById("defenseVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+              
+            }
+            function subDefense(){
+            var elem = document.getElementById("defense");   
+              var width = parseInt(elem.style.width);
+              if(width-10>=0)
+              	width-=10; 
+              elem.style.width = width + '%'; 
+			  var val = document.getElementById("defenseVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+            }
+			
+			function addSpeed() {
+              var elem = document.getElementById("speed");   
+              var width = parseInt(elem.style.width);
+              if(width+10<=100)
+              	width+=10; 
+              elem.style.width = width + '%'; 
+              var val = document.getElementById("speedVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+              
+            }
+            function subSpeed(){
+            var elem = document.getElementById("speed");   
+              var width = parseInt(elem.style.width);
+              if(width-10>=0)
+              	width-=10; 
+              elem.style.width = width + '%'; 
+			  var val = document.getElementById("speedVal");
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  val.innerHTML=parseInt(str)/10;
+            }
+         </script>
+      </div>
+   </body>
+</html>
