@@ -1,0 +1,63 @@
+<!DOCUMENT html>
+
+  <html>
+
+  <?php
+  session_start();
+  ?>
+
+  <head>
+    <title>Capstone Heros</title>
+    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+		
+    </script>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <h1>Capstone Heros</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="#">Home</a>
+      <a href="#">Link</a>
+      <a href="#">Scoreboard</a>
+      <a href="logout.php">Log Out</a>
+    </div>
+
+    <div class="w3-container w3-orange w3-col w3-display-middle w3-round-large">
+         <form class="w3-container" action="thome.php">
+            <div class="w3-padding">
+                  <select class="w3-select w3-border" name="student" required>
+					<option value="" disabled selected>Select a student</option>
+                     <option value="1">John Smith</option>
+                     <option value="2">Rachel Conner</option>
+                     <option value="3">Rick Blair</option>
+					 </select>
+               </div>
+               <div class="w3-padding">
+                  <select class="w3-select w3-border w3-yellow" name="assignment">
+					<option value="" disabled selected>Select an assignment</option>
+                     <option value="1">Worksheet</option>
+                     <option value="2">Essay</option>
+                     <option value="3">Homework</option>
+					 </select>
+               </div>
+			   Grade
+			<input class="w3-input w3-white" type="text" name="grade"><br><br><br>
+               <div class="w3-padding w3-center">
+                  <button class="w3-button w3-hover-green w3-black w3-round-large" type="submit">Submit</button><br>
+               </div>
+            </div>
+			
+         </form>
+      </div>
+  </body>
+
+  </html>
