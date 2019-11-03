@@ -14,14 +14,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
-
-      function myFunction() {
-        var totalSpendPoints = document.getElementById("upgradePoints").innerText;
-        if (totalSpendPoints > 0){
-          document.getElementById("upgradePoints").innerHTML = totalSpendPoints - 1;
+		function add(id) {
+			if(upgradePoints>0){
+              var elem = document.getElementById(id);   
+              var width = parseInt(elem.style.width);
+              if(width+10<=100)
+              	width+=10; 
+              elem.style.width = width + '%'; 
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  elem.innerHTML=parseInt(str)/10;
+			  upgradePoints--;
+			  updatePoints();
+			  }
+              
         }
-      }
-
+		function sub(id){
+            var elem = document.getElementById(id);   
+              var width = parseInt(elem.style.width);
+              if(width-10>=0)
+              	width-=10; 
+              elem.style.width = width + '%'; 
+			  var str = elem.style.width;
+			  if(str.indexOf("%")!=-1)
+				str = str.substring(0,str.indexOf("%"));
+			  elem.innerHTML=parseInt(str)/10;
+			  upgradePoints++;
+			  updatePoints();
+        }
+		function updatePoints(){
+			//upgradePointsElem.innerHTML=upgradePoints;
+		}
+		
+		var upgradePoints = 10;
     </script>
   </head>
 
@@ -44,7 +70,7 @@
         <table>
           <tr>
             <td>Upgrade Points: </td>
-            <td id="upgradePoints">10<td>
+            <td id="upgradePoints"><div id="a">10</div><td>
           </tr>
         </table>
       </div>
@@ -52,24 +78,30 @@
       <hr>
         <p>Health</p>
         <div class="container">
-          <button style="display: inline;">-</button>
-          <div id="healthBar" class="myStats" style="background-color:red; width:100%;">90</div>
-          <button onclick="myFunction()">+</button>
+          <button style="display: inline;" onclick="sub('healthBar')">-</button>
+          <div id="healthBar" class="myStats" style="background-color:red; width:90%;">90</div>
+          <button onclick="add('healthBar')">+</button>
         </div>
 
         <p>Power</p>
         <div class="container">
+			<button style="display: inline;" onclick="sub('powerBar')">-</button>
           <div id="powerBar" class="myStats" style="background-color:green; width:80%;">80%</div>
+		  <button onclick="add('powerBar')">+</button>
         </div>
 
         <p>Defense</p>
         <div class="container">
+			<button style="display: inline;" onclick="sub('defenseBar')">-</button>
           <div id="defenseBar" class="myStats"  style="background-color:purple; width:65%;">65%</div>
+		  <button onclick="add('defenseBar')">+</button>
         </div>
 
         <p>Special</p>
         <div class="container">
+			<button style="display: inline;" onclick="sub('specialBar')">-</button>
           <div id="specialBar" class="myStats" style="background-color:gold; width:60%;">60%</div>
+		  <button onclick="add('specialBar')">+</button>
         </div>
 
         <button id="submit" style="margin:15 0 0 0">Submit</button>
