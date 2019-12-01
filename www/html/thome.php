@@ -92,54 +92,47 @@
             <table>
               <tr>
                 <td>Skill Points: </td>
-                <td id="upgradePoints">10<td>
+                <td id="upgradePoints">10</td>
               </tr>
             </table>
           </div>
 
           <hr>
+<?php
+$url = 'https://web.njit.edu/~gm247/CS491/get_user_stats.php';
 
-            <div class="comicText">
-              <table>
-                <col width=20%>
-                <col width=60%>
-                <col width=20%>
-                <tr>
-                  <td><button style="display: inline;" onclick="degradeStat('attackBar')">-</button></td>
-                  <td><div class="comicText" style="display: inline;">Attack</div></td>
-                  <td><button style="display: inline;" onclick="upgradeStat('attackBar')">+</button></td>
-                </tr>
-              </table>
-              <div id="attackBar" class="myStats" style="background-color:red; width:50%;">50</div>
-            </div>
+$fields = [
+    'password' => $_SESSION["password"],
+    'username' => $_SESSION["username"],
+    'user'     => $_SESSION["username"],
+];
 
-            <div class="comicText">
-              <table>
-                <col width=20%>
-                <col width=60%>
-                <col width=20%>
-                <tr>
-                  <td><button style="display: inline;" onclick="degradeStat('defenseBar')">-</button></td>
-                  <td><div class="comicText" style="display: inline;">Defense</div></td>
-                  <td><button style="display: inline;" onclick="upgradeStat('defenseBar')">+</button></td>
-                </tr>
-              </table>
-              <div id="defenseBar" class="myStats"  style="background-color:purple; width:50%;">50</div>
-            </div>
+$fields_string = http_build_query($fields);
 
-            <div class="comicText">
-              <table>
-                <col width=20%>
-                <col width=60%>
-                <col width=20%>
-                <tr>
-                  <td><button style="display: inline;" onclick="degradeStat('speedBar')">-</button></td>
-                  <td><div class="comicText" style="display: inline;">Speed</div></td>
-                  <td><button style="display: inline;" onclick="upgradeStat('speedBar')">+</button></td>
-                </tr>
-              </table>
-              <div id="speedBar" class="myStats" style="background-color:orange; width:50%;">50</div>
-            </div>
+$ch = curl_init();
+
+curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, true);
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+
+$result = json_decode(curl_exec($ch));
+function echoStats($statName,$color){
+	global $result;
+	$statNum = $result->$statName;
+	echo '<div class="comicText"> <table> <col width=20%> <col width=60%><col width=20%><tr>';
+	echo '<td><button style="display: inline;" onclick="degradeStat('."'".$statName."Bar"."'".')">-</button></td>';
+	echo '<td><div class="comicText" style="display: inline;">Attack</div></td>';
+	echo '<td><button style="display: inline;" onclick="upgradeStat('."'".$statName."Bar"."'".')">+</button></td>';
+	echo "</tr> </table>";
+	echo '<div id="'.$statName.'Bar" class="myStats" style="background-color:'.$color.'; width: '.$statNum.'%;">'.$statNum.'</div> </div>';
+}
+
+echoStats("attack","red");
+echoStats("defense","purple");
+echoStats("speed","orange");
+echoStats("stamina","orange");
+?>
 
             <button id="submit" style="margin:15 0 0 0">Submit</button>
         </div>
