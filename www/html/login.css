@@ -1,0 +1,75 @@
+:root {
+  --formWidth: 200px;
+  --formFontSize: 25px;
+}
+
+html {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/imgs/blue.jpg");
+  height: 100%;
+}
+
+h1 {
+  color: yellow;
+  position: relative;
+  font-family: "Komika Title", cursive;
+  font-style: normal;
+  text-shadow: 4px 4px 1px black;
+}
+
+hr {
+  width: var(--formWidth);
+  margin: 0px;
+}
+
+input[type=text], [type=password] {
+  border-radius: 0px;
+  font-size: var(--formFontSize);
+  border: 0px;
+  outline: none;
+  opacity: 1;
+  background-color: white;
+  font-family: "Komika Text";
+  width: var(--formWidth);
+  height: 35px;
+}
+
+input[type=submit] {
+  border-radius: 0px;
+  border: 0px;
+  font-size: 25px;
+  font-family: "Komika Text";
+  /*text-shadow: 1px 1px red;*/
+  /*box-shadow: 1px 1px limegreen;*/
+  background-color: yellow;
+  width: var(--formWidth);
+  height: 35px;
+}
+
+form {
+  text-align: center;
+  width: var(--formWidth);
+  margin: auto;
+  position: relative;
+}
+
+.formBar{
+  width: var(--formWidth);
+  margin: 0px;
+}
+
+.header {
+  font-size: 75px;
+  padding: 0px;
+  text-align: center;
+}
+
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

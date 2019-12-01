@@ -1,0 +1,159 @@
+:root {
+  --titleFont: "Komika Title";
+  --textFont: "Komika Text";
+  --textFontSize: 30px;
+  --formWidth: 200px;
+  --panelWidth: 300px;
+}
+
+p {
+  font-family: var(--textFont);
+  font-size: var(--textFontSize);
+}
+
+h1 {
+  color: yellow;
+  position: relative;
+  font-family: var(--titleFont);
+  font-style: normal;
+  text-shadow: 5px 5px 1px black;
+}
+
+h2 {
+  color: yellow;
+  position: relative;
+  font-family: var(--titleFont);
+  font-size: 45px;
+  font-style: normal;
+  text-shadow: 5px 5px 1px black;
+}
+
+hr {
+  height: 5px;
+  margin: 0px;
+  background-color: black;
+}
+
+td {
+  font-family: var(--textFont);
+  font-size: var(--textFontSize);
+}
+
+ul {
+  text-align: left;
+  list-style-type: none;
+  font-family: var(--textFont);
+  font-size: var(--textFontSize);
+}
+
+input[type=text], [type=password], [type=number] {
+  border-radius: 0px;
+  font-size: 25px;
+  border: 0px;
+  outline: none;
+  opacity: 1;
+  background-color: white;
+  font-family: var(--textFont);
+  width: var(--formWidth);
+  height: 35px;
+}
+
+input[type=submit] {
+  border-radius: 0px;
+  border: 0px;
+  font-size: 25px;
+  font-family: var(--textFont);
+  /*text-shadow: 1px 1px red;*/
+  /*box-shadow: 1px 1px limegreen;*/
+  background-color: yellow;
+  width: var(--formWidth);
+  height: 35px;
+}
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 345px;
+}
+
+.comicBorder {
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+}
+
+.comicText {
+  font-family: var(--textFont);
+  font-size: var(--textFontSize);
+}
+
+.panel {
+  float: left;
+  width: var(--panelWidth);
+  padding: 15px;
+  color: black;
+  text-align: center;
+  font-size: 15px;
+}
+
+.topnav {
+  margin: 5px 0px 0px 0px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  font-family: var(--textFont);
+  font-size: 25px;
+  color: yellow;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/imgs/cityBlue.jpg");
+  font-size: 50px;
+  padding: 1px;
+  text-align: center;
+}
+
+.hero {
+  float: left;
+  width: 300px;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  font-size: 15px;
+  content:url("/imgs/superHero.jpg");
+}
+
+.bgGreen {
+  background-color: limegreen;
+}
+
+.bgBlue {
+  background-color: #33b5e5;
+}
+
+.bgOrange {
+  background-color: orange;
+}
+
+.margin {
+  margin: 5px 0px 0px 0px;
+}
