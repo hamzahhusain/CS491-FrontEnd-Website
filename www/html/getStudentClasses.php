@@ -37,22 +37,17 @@
 
         $arr = json_decode($result);
 
-        echo "
-        <table>
-          <tr>
-            <th>Class</th>
-            <th>Options</th>
-          </tr>";
+        echo "<ul>";
 
         foreach($arr as $key => $value) {
             if ($key === "className"){
               foreach($value as $className){
-                echo "<tr><td>" . $className. " </td><td>" . "<button type=\"button\" name=\"button\"> <div class=\"addStudent\"></div> </button>" . "</td></tr>";
+                echo "<li>" . $className. "</li>";
               }
             }
         }
 
-        echo "</table>";
+        echo "</ul>";
 
         break;
       default:

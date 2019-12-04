@@ -2,14 +2,15 @@
   --titleFont: "Komika Title";
   --textFont: "Komika Text";
   --textFontSize: 30px;
-  --formWidth: 200px;
-  --panelWidth: 300px;
+  --formWidth: 250px;
+  --panelWidth: 350px;
 }
 
 p {
   font-family: var(--textFont);
   font-size: var(--textFontSize);
 }
+
 
 h1 {
   color: yellow;
@@ -63,21 +64,29 @@ input[type=submit] {
   border: 0px;
   font-size: 25px;
   font-family: var(--textFont);
-  /*text-shadow: 1px 1px red;*/
-  /*box-shadow: 1px 1px limegreen;*/
   background-color: yellow;
   width: var(--formWidth);
   height: 35px;
 }
 
-.row:after {
-  display: table;
-  clear: both;
+table {
+  width: 100%;
+  font-size: 30px;
+  color:white;
 }
 
-.column {
-  float: left;
-  width: 345px;
+.row {
+  display: flex;
+}
+
+.container {
+  min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.hide {
+  display: none;
 }
 
 .comicBorder {
@@ -95,9 +104,13 @@ input[type=submit] {
   float: left;
   width: var(--panelWidth);
   padding: 15px;
-  color: black;
+  color: white;
   text-align: center;
   font-size: 15px;
+}
+
+.panelHeight {
+  height: 100%;
 }
 
 .topnav {
@@ -110,7 +123,7 @@ input[type=submit] {
   float: left;
   display: block;
   font-family: var(--textFont);
-  font-size: 25px;
+  font-size: 30px;
   color: yellow;
   text-align: center;
   padding: 10px 20px;
@@ -134,12 +147,19 @@ input[type=submit] {
 
 .hero {
   float: left;
-  width: 300px;
+  width: 380px;
   color: black;
   text-align: center;
-  padding: 15px;
-  font-size: 15px;
+  padding: 0px;
+  font-size: 0px;
   content:url("/imgs/superHero.jpg");
+}
+
+.addStudent {
+  width: 35px;
+  height: 40px;
+  background-color: transparent;
+  content:url("/imgs/superhero.png");
 }
 
 .bgGreen {
@@ -154,8 +174,15 @@ input[type=submit] {
   background-color: orange;
 }
 
-.margin {
+.bgPurple{
+  background-color: purple;
+}
+
+.topMargin {
   margin: 5px 0px 0px 0px;
+}
+.leftMargin {
+  margin: 0px 0px 0px 5px;
 }
 
 .dropdown {
@@ -170,7 +197,7 @@ input[type=submit] {
   background-color: inherit;
   margin: 0;
   font-family: var(--textFont);
-  font-size: 25px;
+  font-size: 30px;
   color: yellow;
   text-align: center;
   padding: 10px 20px;
@@ -182,7 +209,6 @@ input[type=submit] {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
@@ -193,7 +219,7 @@ input[type=submit] {
   display: block;
   background-color: #333;
   font-family: var(--textFont);
-  font-size: 25px;
+  font-size: 30px;
   color: yellow;
   padding: 10px 20px;
   text-decoration: none;
@@ -203,6 +229,19 @@ input[type=submit] {
   display: block;
 }
 
+.game {
+  width: 100%;
+}
+
+.gamePanel {
+  font-family: var(--textFont);
+  font-size: 75px;
+  float: left;
+  padding: 15px;
+  color: yellow;
+  text-align: center;
+  height: 100%;
+}
 
 .modal {
   display: none; /* Hidden by default */
@@ -213,16 +252,7 @@ input[type=submit] {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
 }
 
 .center {
@@ -248,23 +278,6 @@ input[type=submit] {
   cursor: pointer;
 }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)}
-  to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-  from {transform: scale(0)}
-  to {transform: scale(1)}
-}
-
-  .cancelbtn {
-     width: 100%;
-  }
+.cancelbtn {
+  width: 100%;
 }

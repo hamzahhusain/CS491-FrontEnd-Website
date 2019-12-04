@@ -43,6 +43,7 @@ $password = $_POST["password"];
               $status = $value;
             }elseif ($key === "userType") {
               $userType = $value;
+              $_SESSION["userType"] = $value;
             }
         }
 

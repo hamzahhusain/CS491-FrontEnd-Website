@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION["username"]) ) {
+  if(!isset($_SESSION["username"])) {
     session_destroy();
     header("Location: login.html");
     exit;
@@ -22,33 +22,42 @@
     <script>
 
       var totalSkillPoints = 10;
+      var totalSpentPoints = 0;
 
       $(document).ready(function(){
 
+        // Get the modal
+        var getScoreBoardModal = document.getElementById('getScoreBoard');
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == getScoreBoardModal ) {
+                getScoreBoardModal.style.display = "none";
+            }
+        }
        });
 
-       function upgradeStat(elementId) {
-         if (totalSkillPoints > 0){
-           if (parseInt(document.getElementById(elementId).style.width) + 1 < 100) {
-             totalSkillPoints -= 1;
-             document.getElementById("upgradePoints").innerHTML = totalSkillPoints;
-             var statValue = parseInt(document.getElementById(elementId).style.width) + 1;
-             document.getElementById(elementId).style.width = statValue + "%";
-             document.getElementById(elementId).innerText = statValue;
-           }
-         }
-       }
+      function upgradeStat(elementId) {
+        if (totalSkillPoints > 0){
+          if (parseInt(document.getElementById(elementId).style.width) + 1 < 100) {
+            totalSkillPoints -= 1;
+            document.getElementById("upgradePoints").innerHTML = totalSkillPoints;
+            var statValue = parseInt(document.getElementById(elementId).style.width) + 1;
+            document.getElementById(elementId).style.width = statValue + "%";
+            document.getElementById(elementId).innerText = statValue;
+          }
+        }
+      }
 
-       function degradeStat(elementId) {
-           if (parseInt(document.getElementById(elementId).style.width) > 0) {
-             totalSkillPoints += 1;
-             document.getElementById("upgradePoints").innerHTML = totalSkillPoints;
-             var statValue = parseInt(document.getElementById(elementId).style.width) - 1;
-             document.getElementById(elementId).style.width = statValue + "%";
-             document.getElementById(elementId).innerText = statValue;
-           }
-       }
+      function degradeStat(elementId) {
+          if (parseInt(document.getElementById(elementId).style.width) > 0) {
+            totalSkillPoints += 1;
+            document.getElementById("upgradePoints").innerHTML = totalSkillPoints;
+            var statValue = parseInt(document.getElementById(elementId).style.width) - 1;
+            document.getElementById(elementId).style.width = statValue + "%";
+            document.getElementById(elementId).innerText = statValue;
+          }
+      }
 
     </script>
   </head>
@@ -60,82 +69,122 @@
     </div>
 
     <div class="topnav comicBorder">
-      <a href="#">Home</a>
-      <a href="#">Scoreboard</a>
+      <a href="shome.html">Home</a>
+      <a onclick="document.getElementById('getScoreBoard').style.display='block'">Scoreboard</a>
       <a href="logout.php">Log Out</a>
     </div>
-    <div>
 
-
-      <div class="stats comicBorder margin1 bgBlue">
-        <h2>My Stats</h2>
-        <div>
-          <table>
-            <tr>
-              <td>Skill Points: </td>
-              <td id="upgradePoints">10<td>
-            </tr>
-          </table>
-        </div>
-
-        <hr>
-
-          <div class="stat comicText">
-            <table>
-              <col width=20%>
-              <col width=60%>
-              <col width=20%>
-              <tr>
-                <td><button style="display: inline;" onclick="degradeStat('attackBar')">-</button></td>
-                <td><div class="comicText" style="display: inline;">Attack</div></td>
-                <td><button style="display: inline;" onclick="upgradeStat('attackBar')">+</button></td>
-              </tr>
-            </table>
-            <div id="attackBar" class="myStats" style="background-color:red; width:50%;">50</div>
-          </div>
-
-          <div class="stat comicText">
-            <table>
-              <col width=20%>
-              <col width=60%>
-              <col width=20%>
-              <tr>
-                <td><button style="display: inline;" onclick="degradeStat('defenseBar')">-</button></td>
-                <td><div class="comicText" style="display: inline;">Defense</div></td>
-                <td><button style="display: inline;" onclick="upgradeStat('defenseBar')">+</button></td>
-              </tr>
-            </table>
-            <div id="defenseBar" class="myStats"  style="background-color:purple; width:50%;">50</div>
-          </div>
-
-          <div class="stat comicText">
-            <table>
-              <col width=20%>
-              <col width=60%>
-              <col width=20%>
-              <tr>
-                <td><button style="display: inline;" onclick="degradeStat('speedBar')">-</button></td>
-                <td><div class="comicText" style="display: inline;">Speed</div></td>
-                <td><button style="display: inline;" onclick="upgradeStat('speedBar')">+</button></td>
-              </tr>
-            </table>
-            <div id="speedBar" class="myStats" style="background-color:orange; width:50%;">50</div>
-          </div>
-
-          <button id="submit" style="margin:15 0 0 0">Submit</button>
+    <div id="getScoreBoard" class="modal">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('createClass').style.display='none'" class="close" title="Close Modal">&times;</span>
       </div>
 
-      <div class="stats comicBorder margin2 bg bgGreen">
-        <h2>User Info</h2>
-
+      <div class="panel comicBorder topMargin bgPurple center">
+        <h2>Score Board</h2>
         <hr>
 
         <div>
-          <?php include 'getUserStats.php'; ?>
+          <?php include 'getScoreBoard.php'; ?>
         </div>
-
       </div>
     </div>
+
+    <div class="row">
+      <div class="container">
+
+        <div class="comicBorder topMargin hero">
+        </div>
+
+        <div class="panel panelHeight comicBorder topMargin bgBlue">
+          <h2>Hero Stats</h2>
+          <div>
+            <table>
+              <tr>
+                <td>Skill Points: </td>
+                <td id="upgradePoints">10<td>
+              </tr>
+            </table>
+          </div>
+
+          <hr>
+
+            <div class="comicText">
+              <table>
+                <col width=20%>
+                <col width=60%>
+                <col width=20%>
+                <tr>
+                  <td><button style="display: inline;" onclick="degradeStat('attackBar')">-</button></td>
+                  <td><div class="comicText" style="display: inline;">Attack</div></td>
+                  <td><button style="display: inline;" onclick="upgradeStat('attackBar')">+</button></td>
+                </tr>
+              </table>
+              <div id="attackBar" class="myStats" style="background-color:red; width:50%;">50</div>
+            </div>
+
+            <div class="comicText">
+              <table>
+                <col width=20%>
+                <col width=60%>
+                <col width=20%>
+                <tr>
+                  <td><button style="display: inline;" onclick="degradeStat('defenseBar')">-</button></td>
+                  <td><div class="comicText" style="display: inline;">Defense</div></td>
+                  <td><button style="display: inline;" onclick="upgradeStat('defenseBar')">+</button></td>
+                </tr>
+              </table>
+              <div id="defenseBar" class="myStats"  style="background-color:purple; width:50%;">50</div>
+            </div>
+
+            <div class="comicText">
+              <table>
+                <col width=20%>
+                <col width=60%>
+                <col width=20%>
+                <tr>
+                  <td><button style="display: inline;" onclick="degradeStat('speedBar')">-</button></td>
+                  <td><div class="comicText" style="display: inline;">Speed</div></td>
+                  <td><button style="display: inline;" onclick="upgradeStat('speedBar')">+</button></td>
+                </tr>
+              </table>
+              <div id="speedBar" class="myStats" style="background-color:orange; width:50%;">50</div>
+            </div>
+
+            <button id="submit" style="margin:15 0 0 0">Submit</button>
+        </div>
+
+      </div>
+
+      <div class="container leftMargin">
+        <div class="panel panelHeight comicBorder topMargin bgGreen">
+          <h2>Hero Info</h2>
+          <hr>
+
+          <div class="getInfo">
+            <?php include 'getUserStats.php'; ?>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="container leftMargin">
+        <div class="panel panelHeight comicBorder topMargin bgOrange">
+          <h2>Classes</h2>
+          <hr>
+          <button class="hide addClass" type="button" name="button" onclick="document.getElementById('createClass').style.display='block'">Add Class</button>
+          <div class="game GetClasses">
+            <?php include 'getStudentClasses.php'; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="container game leftMargin">
+        <div class=" gamePanel comicBorder topMargin bgPurple">
+            GAME!
+        </div>
+      </div>
+    </div>
+
   </body>
 
   </html>

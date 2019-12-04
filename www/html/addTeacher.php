@@ -7,19 +7,18 @@
     exit;
   }
 
-  $url = 'https://web.njit.edu/~gm247/CS491/create_student.php';
+  $url = 'https://web.njit.edu/~gm247/CS491/create_teacher.php';
 
   $fields = [
       'password' => $_SESSION["password"],
       'username' => $_SESSION["username"],
-      'studentusername' => $_POST["username"],
-      'studentpassword' => $_POST["password"],
+      'teacherusername' => $_POST["username"],
+      'teacherpassword' => $_POST["password"],
       'firstname' => $_POST["firstName"],
       'lastname' => $_POST["lastName"],
       'school' => $_POST["school"],
       'playerrank' => $_POST["rank"],
       'heroName' => $_POST["heroName"],
-
   ];
   foreach ($fields as $key) {
     echo $key;

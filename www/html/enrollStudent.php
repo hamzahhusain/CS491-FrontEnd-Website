@@ -7,14 +7,18 @@
     exit;
   }
 
+  $user_to_add = $_POST["user_to_add"];
+  $class_id = $_POST["class_id"];
   $username = $_SESSION["username"];
   $password = $_SESSION["password"];
 
-  $url = 'https://web.njit.edu/~gm247/CS491/get_class_enrolled.php';
+  $url = 'https://web.njit.edu/~gm247/CS491/add_student_to_class.php';
 
   $fields = [
       'password' => $password,
       'username' => $username,
+      'user_to_add' => $user_to_add,
+      'class_id' => $class_id,
   ];
 
   $fields_string = http_build_query($fields);
@@ -32,27 +36,7 @@
     switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
       case 200:
 
-        $status = 0;
-        $userType = 0;
-
         $arr = json_decode($result);
-
-        echo "
-        <table>
-          <tr>
-            <th>Class</th>
-            <th>Options</th>
-          </tr>";
-
-        foreach($arr as $key => $value) {
-            if ($key === "className"){
-              foreach($value as $className){
-                echo "<tr><td>" . $className. " </td><td>" . "<button type=\"button\" name=\"button\"> <div class=\"addStudent\"></div> </button>" . "</td></tr>";
-              }
-            }
-        }
-
-        echo "</table>";
 
         break;
       default:

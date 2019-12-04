@@ -28,14 +28,16 @@
 
         // Get the modal
         var addStudentModal = document.getElementById('addStudent');
+        var addTeacherModal = document.getElementById('addTeacher');
         var createClassModal = document.getElementById('createClass');
         var getScoreBoardModal = document.getElementById('getScoreBoard');
         var createAssignment = document.getElementById('createAssignment');
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
-            if (event.target == addStudentModal | event.target == createClassModal | event.target == getScoreBoardModal | event.target == createAssignment) {
+            if (event.target == addStudentModal | event.target == addTeacherModal | event.target == createClassModal | event.target == getScoreBoardModal | event.target == createAssignment) {
                 addStudentModal.style.display = "none";
+                addTeacherModal.style.display = "none";
                 createClassModal.style.display = "none";
                 getScoreBoardModal.style.display = "none";
                 createAssignment.style.display = "none";
@@ -83,6 +85,7 @@
         </button>
         <div class="dropdown-content">
           <a onclick="document.getElementById('addStudent').style.display='block'">Add Student</a>
+          <a onclick="document.getElementById('addTeacher').style.display='block'">Add Teacher</a>
           <a onclick="document.getElementById('createClass').style.display='block'">Create Class</a>
           <a onclick="document.getElementById('createAssignment').style.display='block'">Creat Assignment</a>
         </div>
@@ -111,6 +114,29 @@
           <input type="submit" value="Add Student" name="submit">  </input><br><br>
         </form>
       </div>
+  </div>
+
+  <div id="addTeacher" class="modal">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('addTeacher').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="panel comicBorder bgBlue center">
+      <h2>Add Teacher</h2>
+      <hr>
+
+      <form  action="addTeacher.php" method="POST">
+        <br>
+        <input type="text" placeholder="USERNAME" name="username" required><br><br>
+        <input type="password" placeholder="PASSWORD" name="password" required><br><br>
+        <input type="text" placeholder="FIRST NAME" name="firstName" required><br><br>
+        <input type="text" placeholder="LAST NAME" name="lastName" required><br><br>
+        <input type="text" placeholder="SCHOOL" name="school" required><br><br>
+        <input type="text" placeholder="HERONAME" name="heroName" required><br><br>
+        <input type="text" placeholder="RANK" name="rank" value="10" hidden required><br><br>
+        <input type="submit" value="Add Teacher" name="submit"> </input><br><br>
+      </form>
+    </div>
   </div>
 
   <div id="createClass" class="modal">
@@ -165,8 +191,10 @@
 
     <div class="row">
       <div class="container">
+
         <div class="comicBorder topMargin hero">
         </div>
+
         <div class="panel panelHeight comicBorder topMargin bgBlue">
           <h2>Hero Stats</h2>
           <div>
@@ -221,17 +249,21 @@
               </table>
               <div id="speedBar" class="myStats" style="background-color:orange; width:50%;">50</div>
             </div>
+
             <button id="submit" style="margin:15 0 0 0">Submit</button>
         </div>
+
       </div>
 
       <div class="container leftMargin">
         <div class="panel panelHeight comicBorder topMargin bgGreen">
           <h2>Hero Info</h2>
           <hr>
+
           <div class="getInfo">
             <?php include 'getUserStats.php'; ?>
           </div>
+
         </div>
       </div>
 

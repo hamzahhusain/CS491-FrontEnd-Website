@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION["username"])) {
+  if(!isset($_SESSION["username"]) ) {
     session_destroy();
     header("Location: login.html");
     exit;
@@ -9,12 +9,16 @@
 
   $username = $_SESSION["username"];
   $password = $_SESSION["password"];
+  $description = $_POST["description"];
+  $skillPoints = $_POST["skillPoints"];
 
-  $url = 'https://web.njit.edu/~gm247/CS491/get_class_enrolled.php';
+  $url = 'https://web.njit.edu/~gm247/CS491/create_class.php';
 
   $fields = [
       'password' => $password,
       'username' => $username,
+      'assignmentdescription' => $description,
+      'skillpoints' => $skillPoints,
   ];
 
   $fields_string = http_build_query($fields);
@@ -27,7 +31,7 @@
   curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
   $result = curl_exec($ch);
-
+  $class_id = -1;
   if (!curl_errno($ch)) {
     switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
       case 200:
@@ -37,22 +41,7 @@
 
         $arr = json_decode($result);
 
-        echo "
-        <table>
-          <tr>
-            <th>Class</th>
-            <th>Options</th>
-          </tr>";
-
-        foreach($arr as $key => $value) {
-            if ($key === "className"){
-              foreach($value as $className){
-                echo "<tr><td>" . $className. " </td><td>" . "<button type=\"button\" name=\"button\"> <div class=\"addStudent\"></div> </button>" . "</td></tr>";
-              }
-            }
-        }
-
-        echo "</table>";
+        header("Location: thome.html");
 
         break;
       default:
